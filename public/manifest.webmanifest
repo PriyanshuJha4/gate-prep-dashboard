@@ -1,10 +1,12 @@
 {
+  "id": "/",
   "name": "GATE 2027 CSE Prep",
   "short_name": "GATE Prep",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "background_color": "#020817",
+  "theme_color": "#020817",
   "icons": [
     {
       "src": "/icon-192.png",

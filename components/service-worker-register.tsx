@@ -6,9 +6,19 @@ export function ServiceWorkerRegister() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
 
-    navigator.serviceWorker.register("/sw.js").catch(() => {
-      // Installability still depends on a registered SW; fail silently in unsupported contexts.
-    });
+    const register = () => {
+      navigator.serviceWorker
+        .register("/sw.js", { scope: "/", updateViaCache: "none" })
+        .catch(() => {
+          // Registration can fail in insecure contexts; Chrome will not show install then.
+        });
+    };
+
+    if (document.readyState === "complete") {
+      register();
+    } else {
+      window.addEventListener("load", register, { once: true });
+    }
   }, []);
 
   return null;
